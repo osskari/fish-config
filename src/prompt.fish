@@ -3,6 +3,9 @@ function pretty_path
 end
 
 set -g __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_showcolorhints 1
+set -g __fish_git_prompt_showuntrackedfiles 1
+set -g __fish_git_prompt_showdirtystate 1
 
 function fish_prompt
   # whoami pwd git-branch git-status
