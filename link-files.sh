@@ -1,8 +1,15 @@
+#!/bin/sh
+
 fish_config_dir="$HOME/.config/fish/conf.d"
 
 if [ ! -d "$fish_config_dir" ]; then
   echo "Could not find fish config"
-  exit -1
+  exit 1
+fi
+
+if [ ! -n "$(ls -A src/*.fish 2>/dev/null)" ]; then
+  echo "No config files found"
+  exit 2
 fi
 
 for file in src/*.fish; do
