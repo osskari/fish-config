@@ -10,10 +10,23 @@ set -g fish_prompt_pwd_dir_length 0
 # enable vi mode
 set -g fish_key_bindings fish_vi_key_bindings
 
+set fish_greeting
+
+function nix_shell_info
+  if test -n "$IN_NIX_SHELL"
+    echo " <nix-shell>"
+  end
+end
+
 function fish_prompt
-  # whoami pwd git-branch git-status
-  echo (set_color 'blue')(whoami) (set_color 'yellow')(prompt_pwd) (set_color 'normal')(fish_git_prompt)
-  echo (set_color 'red')"\$ "(set_color 'normal')
+  # whoami pwd git-branch git-status nix-shell
+  echo -n (set_color 'blue')(whoami)
+  echo -n (set_color 'yellow')(prompt_pwd)
+  echo -n (set_color 'red')(nix_shell_info)
+  echo (set_color 'normal')(fish_git_prompt)
+  # prompt
+  echo -n (set_color 'red')"\$ "
+  echo -n (set_color 'normal')
 end
 
 function fish_right_prompt
