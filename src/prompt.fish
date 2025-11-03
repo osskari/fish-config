@@ -21,6 +21,7 @@ end
 function fish_prompt
   # whoami pwd git-branch git-status nix-shell
   echo -n (set_color 'blue')(whoami)
+  echo -n ' '
   echo -n (set_color 'yellow')(prompt_pwd)
   echo -n (set_color 'red')(nix_shell_info)
   echo (set_color 'normal')(fish_git_prompt)
